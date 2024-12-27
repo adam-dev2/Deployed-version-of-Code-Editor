@@ -1,30 +1,21 @@
-import React, { useState } from 'react';
-import Navbar from './components/Navbar';
-import CodeEditor from './components/CodeEditor';
-import OutputPane from './components/OutputPane';
-import './App.css';
+import React from 'react';
+import Navbar from './Navbar';
+import Body from './Body';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Coding from './Coding';
 
-function App() {
-  const [language, setLanguage] = useState('cpp');
-  const [theme, setTheme] = useState('vs-dark');
-  const [code, setcode] = useState('/* Start Coding here');
-
-  function submithandler() {
-    
-  }
-
+const App = () => {
   return (
-    <div className="app">
-      <Navbar onLanguageChange={setLanguage} onThemeChange={setTheme} />
-      <div className="editor-output-container">
-        <CodeEditor language={language} theme={theme} code={code} setcode={setcode}/>
-        <OutputPane />
-      </div>
-      <div className='btn'>
-        <button onClick={submithandler}>Submit</button>
-      </div>
-    </div>
+    <>
+      <Router>
+        
+        <Routes>
+          <Route path="/" element={<Body />} />
+          <Route path="/Coding" element={<Coding />} />
+        </Routes>
+      </Router>
+    </>
   );
-}
+};
 
 export default App;
